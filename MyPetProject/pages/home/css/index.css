@@ -1,0 +1,33 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.carousel-item img {
+    height: 500px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 2.5em;
+    color: #333;
+}
+
+#welcomeMessage {
+    font-size: 1.2em;
+    color: #555;
+}
+
+#userInfo p {
+    font-size: 1.1em;
+}

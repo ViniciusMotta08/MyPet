@@ -1,8 +1,20 @@
 class User {
-    constructor(id, nome, email, senha) {
+    constructor(id, name, email, password) {
         this.id = id;
-        this.nome = nome;
+        this.name = name;
         this.email = email;
-        this.senha = senha;
+        this.password = password;
     }
 }
+
+const userDatabase = []; // Simulação de banco de dados em memória
+
+function addUser(user) {
+    userDatabase.push(user);
+}
+
+function getUserByEmail(email) {
+    return userDatabase.find(user => user.email === email);
+}
+
+export { User, addUser, getUserByEmail };
