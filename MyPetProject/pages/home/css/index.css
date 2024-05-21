@@ -23,6 +23,11 @@ h1 {
     color: #333;
 }
 
+h2 {
+    font-size: 1.5em;
+    color: #555;
+}
+
 #welcomeMessage {
     font-size: 1.2em;
     color: #555;
@@ -30,4 +35,12 @@ h1 {
 
 #userInfo p {
     font-size: 1.1em;
+}
+
+footer {
+    background-color: #f8f9fa;
+    color: #555;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
 }

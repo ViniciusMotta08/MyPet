@@ -1,15 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
     const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
-    const userInfoDiv = document.getElementById('userInfo');
+    const userGreetingDiv = document.getElementById('userGreeting');
     const userEmail = document.getElementById('userEmail');
     const logoutButton = document.getElementById('logoutButton');
 
     if (loggedInUser) {
-        const userInfoHtml = `
-            <p><strong>Nome:</strong> ${loggedInUser.name}</p>
-            <p><strong>Email:</strong> ${loggedInUser.email}</p>
+        const greetingHtml = `
+            <h2>Hello, ${loggedInUser.name}! We're glad to see you here 😊</h2>
         `;
-        userInfoDiv.innerHTML = userInfoHtml;
+        userGreetingDiv.innerHTML = greetingHtml;
         userEmail.innerText = loggedInUser.email;
     } else {
         window.location.href = '../../pages/auth/login.html';
