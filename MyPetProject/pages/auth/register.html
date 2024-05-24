@@ -6,45 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../pages/auth/css/register.css">
+    <link rel="stylesheet" href="../../pages/auth/css/login.css">
 </head>
 
 <body>
     <header>
-        <div class="container text-center my-3">
-            <h1 class="display-3 text-primary font-weight-bold">MyPet</h1>
-        </div>
+        <img id="logo" src="../../assets/logo.png">
     </header>
 
     <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="card p-5 shadow-lg" style="width: 400px; background-color: rgba(255, 255, 255, 0.9);">
+        <div id="form-auth" class="card p-5 shadow-lg">
             <h2 class="text-center mb-4">Create your account</h2>
             <form id="registerForm">
                 <div class="form-group">
-                    <label for="name">Name:</label>
+                    <label class="label-auth" for="name">Name:</label>
                     <input type="text" class="form-control" id="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email:</label>
+                    <label class="label-auth" for="email">Email:</label>
                     <input type="email" class="form-control" id="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password:</label>
+                    <label class="label-auth" for="password">Password:</label>
                     <input type="password" class="form-control" id="password" required>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block mt-3">Register</button>
-                <p class="text-center mt-3">Already have an account? <a href="login.html">Login</a></p>
+                <button id="btn" type="submit" class="btn btn-block mt-3">Register</button>
+                <p class="text-center mt-3">Already have an account? <a id="btn-label" href="login.html">Login</a></p>
             </form>
         </div>
     </div>
 
-    <footer class="bg-light py-2">
+    <footer>
         <div class="container text-center">
             <p>&copy; 2024 MyPet. All rights reserved.</p>
         </div>
     </footer>
 
-    <script type="module" src="../../Application/Services/register.js"></script>
+    <script type="module" src="../../application/services/login.js"></script>
 </body>
 
 </html>

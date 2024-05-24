@@ -11,6 +11,7 @@ const userDatabase = []; // Simulação de banco de dados em memória
 
 function addUser(user) {
     userDatabase.push(user);
+    console.log("Users: ", userDatabase);
 }
 
 function getUserByEmail(email) {

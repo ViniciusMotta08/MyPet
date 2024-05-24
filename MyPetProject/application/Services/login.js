@@ -1,12 +1,24 @@
-import { User, getUserByEmail, addUser } from '../../domain/models/user.js';
+import { User, addUser, getUserByEmail } from '../../domain/models/user.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
 
-    // Usuários de exemplo (normalmente você os obteria de uma API ou banco de dados)
-    addUser(new User(1, 'João', 'joao@example.com', '123456'));
-    addUser(new User(2, 'Maria', 'maria@example.com', 'abcdef'));
+    async function fetchUsers() {
+        try {
+            const response = await fetch('https://back-login.vercel.app/usuarios');
+            if (response.ok) {
+                const apiUsers = await response.json();
+                apiUsers.forEach(user => addUser(new User(user.id, user.nome, user.email, user.senha)));
+            } else {
+                console.error('Failed to fetch users:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error fetching users:', error);
+        }
+    }
+
+    fetchUsers();
 
     if (loginForm) {
         loginForm.addEventListener('submit', function (e) {
@@ -34,9 +46,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const newUser = new User(Date.now(), name, email, password);
             addUser(newUser);
-            console.log({ name, email, password });
+                    
             alert('Registro bem-sucedido! Agora você pode fazer login.');
-            window.location.href = 'login.html';
+            window.location.href = '../../pages/auth/login.html';
         });
     }
 });
