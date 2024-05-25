@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
             <h2>Hello, ${loggedInUser.name}! We're glad to see you here 😊</h2>
         `;
         userGreetingDiv.innerHTML = greetingHtml;
-        userEmail.innerText = loggedInUser.email;
     } else {
         window.location.href = '../../pages/auth/login.html';
     }
