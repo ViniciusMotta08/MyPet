@@ -58,6 +58,40 @@
         </main>
     </div>
 
+    <div id="addModal" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-light" style="background-color: #f87e59;">
+                    <h5 class="modal-title">Adicionar Pet</h5>
+                </div>
+                <div class="modal-body">
+                    <form id="addPetForm">
+                        <div class="mb-3">
+                            <label for="addPetName" class="form-label">Name:</label>
+                            <input type="text" class="form-control" id="addPetName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="addPetRace" class="form-label">Breed:</label>
+                            <input type="text" class="form-control" id="addPetRace" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="addPetColor" class="form-label">Color:</label>
+                            <input type="text" class="form-control" id="addPetColor" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="addPetImageUrl" class="form-label">Image URL:</label>
+                            <input type="url" class="form-control" id="addPetImageUrl" required>
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="button" class="btn me-md-2 btn-light" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn me-md-2" style="background-color: #FD7249; color: #FFFF">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>    
+
     <div id="editModal" class="modal fade">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -78,15 +112,19 @@
                             <label for="editPetColor" class="form-label">Color:</label>
                             <input type="text" class="form-control" id="editPetColor" required>
                         </div>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">                            
+                        <div class="mb-3">
+                            <label for="editPetImageUrl" class="form-label">Image URL:</label>
+                            <input type="url" class="form-control" id="editPetImageUrl" required>
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button type="button" class="btn me-md-2 btn-light" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn me-md-2"style="background-color: #FD7249; color: #FFFF">Salvar</button>
+                            <button type="submit" class="btn me-md-2" style="background-color: #FD7249; color: #FFFF">Salvar</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
 
     <div id="deleteModal" class="modal fade">
         <div class="modal-dialog modal-dialog-centered">
