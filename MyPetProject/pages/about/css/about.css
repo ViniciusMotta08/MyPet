@@ -34,9 +34,11 @@ h1, h2, h5 {
 }
 
 .card {
-    background-color: rgba(253, 114, 73, 0.1); /* Laranja claro com transparência */
-    border: 2px solid rgba(253, 114, 73, 0.5); /* Borda laranja mais opaca */
+    background-color: rgba(253, 115, 73, 0.522); /* Laranja claro com transparência */
+    border: 2px solid rgba(253, 115, 73, 0.267); /* Borda laranja mais opaca */
     transition: transform 0.3s ease-in-out;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); 
 }
 
 .card:hover {
@@ -44,9 +46,62 @@ h1, h2, h5 {
 }
 
 .card-title {
-    color: #FD7249;
+    color: #ffffff;
 }
 
 img {
     border-radius: 8px;
+}
+.nav-item{
+    font-weight: 600
+}
+#logoutButton{
+    margin-left: 15px;
+}
+.container-details {
+    display: flex;
+    margin-bottom: 20px; /* Espaço entre as seções */
+}
+
+#text-column-1,
+#text-column-2 {
+    flex: 1;
+}
+
+#image-column-1,
+#image-column-2 {
+    flex: 1;
+}
+
+#text-column-1,
+#image-column-2 {
+    padding-right: 20px; /* Espaço entre as colunas */
+}
+
+#image-column-1,
+#text-column-2 {
+    padding-left: 20px; /* Espaço entre as colunas */
+
+}
+
+.container-details img {
+    max-width: 100%; /* Para garantir que a imagem não ultrapasse o tamanho da coluna */
+}
+ 
+.container-details{
+    background-color: rgba(253, 115, 73, 0.522); /* Laranja claro com transparência */
+    border: 2px solid rgba(253, 115, 73, 0.267); /* Borda laranja mais opaca */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out; 
+    margin-bottom: 25px;
+    margin-bottom: 50px;
+    margin-top: 15px;
+    
+}
+.container-details:hover {
+    transform: scale(1.1); /* Escala de 110% no hover */
+    
+}
+#text-column-2, #text-column-1{
+    padding: 20px;
 }

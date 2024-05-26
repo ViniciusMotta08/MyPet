@@ -142,3 +142,10 @@ body {
     color: #FFFF;
     width: 45%;
 }
+.nav-item{
+    font-weight: 600
+}
+
+#logoutButton{
+    margin-left: 15px;
+}
