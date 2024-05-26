@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
     const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
-    const userGreetingDiv = document.getElementById('userGreeting');
     const logoutButton = document.getElementById('logoutButton');
 
     if (!loggedInUser) {
