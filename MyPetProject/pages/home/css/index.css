@@ -27,8 +27,10 @@ body {
 
 .carousel-item img {
     width: 100%;
-    height: 600px; /* Ajuste conforme necessário */
+    max-height: 500px; /* Altura máxima desejada */
+    height: auto; /* Altura automática para manter a proporção */
     object-fit: cover;
+    overflow: hidden;
 }
 
 #userGreeting {
@@ -40,8 +42,8 @@ footer {
     background-color: transparent;
     color: #FFFF;
     text-align: center;
-    padding-top: 80px;
     width: 100%;
+    margin-top: 30px;
 }
 
 .nav-item{
