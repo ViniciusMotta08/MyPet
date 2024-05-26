@@ -12,6 +12,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" href="../../assets/favicon.ico">
 </head>
 
 <body>
@@ -37,7 +38,7 @@
                         <a class="nav-link" href="../../pages/about/about.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <button id="logoutButton" class="btn btn-logout">
+                        <button id="logoutButton" class="btn btn-outline-danger">
                             <i class="fas fa-sign-out-alt"></i>
                         </button>
                     </li>
@@ -50,34 +51,30 @@
     <div class="container mt-5 pt-5">
         <div class="row">
             <div class="col-12 text-center mb-4">
-                <h1 class="display-4">About Us</h1>
+                <h1 class="display-4" style="margin-top: -25px;">About Us</h1>
                 <p class="lead">Learn more about our mission and the team behind MyPet</p>
             </div>
         </div>
-
-        <div class="row mb-4">
-            <div class="col-md-6">
-                <h2 class="mb-3">Our mission</h2>
-                <p>MyPet is dedicated to finding loving homes for pets in need. We believe that
-                    all
-                    An animal deserves a loving family and we strive to make pet adoption easier.
-                    quick and
-                    safe.</p>
+        
+        <div class="container-about">
+            <div class="container-details">
+                <div id="text-column-1">
+                    <h2 class="mb-3" style="color: aliceblue;">Our mission</h2>
+                    <p>MyPet is dedicated to finding loving homes for pets in need. We believe that all animals deserve a loving family and we strive to make pet adoption easier, quick, and safe.</p>
+                </div>
+                <div id="image-column-1">
+                    <img src="../../assets/mission.avif" class="img-fluid rounded" alt="Nossa Missão">
+                </div>
             </div>
-            <div class="col-md-6">
-                <img src="../../assets/mission.avif" class="img-fluid rounded" alt="Nossa Missão">
-            </div>
-        </div>
-
-        <div class="row mb-4">
-            <div class="col-md-6 order-md-2">
-                <h2 class="mb-3">Our team</h2>
-                <p>Our team is made up of dedicated animal lovers, including volunteers and professionals who
-                    work
-                    work hard to ensure the well-being of pets and facilitate the adoption process.</p>
-            </div>
-            <div class="col-md-6 order-md-1">
-                <img src="../../assets/team.webp" class="img-fluid rounded" alt="Nossa Equipe">
+        
+            <div class="container-details">
+                <div id="image-column-2">
+                    <img src="../../assets/team.webp" class="img-fluid rounded" alt="Nossa Equipe">
+                </div>
+                <div id="text-column-2">
+                    <h2 class="mb-3" style="color: aliceblue;">Happy stories</h2>
+                    <p>Check out some of our success stories and see how we help pets find new homes.</p>
+                </div>
             </div>
         </div>
 
@@ -119,6 +116,12 @@
             </div>
         </div>
     </div>
+    
+  <footer>
+    <div class="container text-center" style="margin-top: 35px;">
+      <p>&copy; 2024 MyPet. All rights reserved.</p>
+    </div>
+  </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
