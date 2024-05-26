@@ -8,6 +8,11 @@ body {
     font-family: "Ubuntu", sans-serif;
     font-weight: 300;
     font-style: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 .navbar {
     background-color: transparent;
@@ -27,8 +32,8 @@ body {
 
 .carousel-item img {
     width: 100%;
-    max-height: 500px; /* Altura máxima desejada */
-    height: auto; /* Altura automática para manter a proporção */
+    max-height: 600px;
+    height: auto;
     object-fit: cover;
     overflow: hidden;
 }
@@ -36,14 +41,15 @@ body {
 #userGreeting {
     padding-top: 50px;
     color: #FD7249;
+    margin-bottom: 100px;
 }
 
 footer {
     background-color: transparent;
     color: #FFFF;
-    text-align: center;
+    position: fixed;
+    bottom: 0;
     width: 100%;
-    margin-top: 30px;
 }
 
 .nav-item{
