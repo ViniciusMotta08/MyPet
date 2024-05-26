@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
   const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
   const logoutButton = document.getElementById('logoutButton');
-  let pets = []; // Lista de pets em memória
+  let pets = [];
 
   if (!loggedInUser) {
-      window.location.href = '../../pages/auth/login.html';
+    window.location.href = '../../pages/auth/login.html';
   }
 
   logoutButton.addEventListener('click', function () {
-      sessionStorage.removeItem('loggedInUser');
-      window.location.href = '../../pages/auth/login.html';
+    sessionStorage.removeItem('loggedInUser');
+    window.location.href = '../../pages/auth/login.html';
   });
 
   function loadPets() {
@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
         return response.json();
       })
       .then(data => {
-        pets = data.pets; // Atualiza a lista de pets em memória
-        renderPets(pets); // Renderiza os pets na interface
+        pets = data.pets;
+        renderPets(pets);
       })
       .catch(error => {
         console.error('Error loading pets:', error.message);
@@ -43,8 +43,8 @@ document.addEventListener('DOMContentLoaded', function () {
                   <p><strong>Breed:</strong> ${pet.raca}</p>
               </div>
               <div class="pet-actions">
-                  <button class="edit-button" data-id="${pet.id}">Edit</button>
-                  <button class="delete-button" data-id="${pet.id}">Delete</button>
+                  <button class="edit-button btn btn-primary" data-id="${pet.id}">Edit</button>
+                  <button class="delete-button btn btn-danger" data-id="${pet.id}">Delete</button>
               </div>
           </div>
       </div>
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
       pet.raca.toLowerCase().includes(searchTerm) ||
       pet.cor.toLowerCase().includes(searchTerm)
     );
-    renderPets(filteredPets); // Renderiza os pets filtrados na interface
+    renderPets(filteredPets);
   });
 
   document.addEventListener('click', function (event) {
@@ -71,113 +71,110 @@ document.addEventListener('DOMContentLoaded', function () {
       openEditModal(petId);
     } else if (event.target.classList.contains('delete-button')) {
       const petId = event.target.dataset.id;
-      deletePet(petId);
+      openDeleteModal(petId);
     } else if (event.target.classList.contains('close')) {
       closeEditModal();
     }
   });
 
+  const editModalElement = document.getElementById('editModal');
+  const addModalElement = document.getElementById('addModal');
+  const deleteModalElement = document.getElementById('deleteModal');
+
+  const editModal = new bootstrap.Modal(editModalElement);
+  const addModal = new bootstrap.Modal(addModalElement);
+  const deleteModal = new bootstrap.Modal(deleteModalElement);
+
   function openEditModal(petId) {
-      const pet = pets.find(pet => pet.id === parseInt(petId));
-      if (!pet) {
-          console.error('Pet not found');
-          return;
-      }
-  
-      // Preencher os campos do formulário com os detalhes do pet
-      document.getElementById('editPetName').value = pet.nome;
-      document.getElementById('editPetRace').value = pet.raca;
-      document.getElementById('editPetColor').value = pet.cor;
-      document.getElementById('editPetImageUrl').value = pet.image;
-  
-      // Exibir o modal
-      const editModal = new bootstrap.Modal(document.getElementById('editModal'));
-      editModal.show();
+    const pet = pets.find(pet => pet.id === parseInt(petId));
+    if (!pet) {
+      console.error('Pet not found');
+      return;
+    }
+
+    document.getElementById('editPetName').value = pet.nome;
+    document.getElementById('editPetRace').value = pet.raca;
+    document.getElementById('editPetColor').value = pet.cor;
+    document.getElementById('editPetImageUrl').value = pet.image;
+    document.getElementById('editPetId').value = pet.id;
+
+    editModal.show();
+  }
+
+  function openDeleteModal(petId) {
+    deleteModal.show();
+
+    const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+    confirmDeleteButton.onclick = function() {
+      deletePet(petId);
+    };
   }
 
   function deletePet(petId) {
-      // Abrir o modal de confirmação
-      const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
-      deleteModal.show();
-  
-      // Quando o usuário confirmar a exclusão
-      document.getElementById('confirmDeleteButton').addEventListener('click', function() {
-          fetch(`https://projeto-integrado-avaliacao.azurewebsites.net/projeto3/fecaf/excluir/pet/${petId}`, {
-              method: 'DELETE'
-          })
-          .then(response => {
-              if (!response.ok) {
-                  throw new Error('Failed to delete pet');
-              }
-              loadPets();
-              deleteModal.hide(); // Esconder o modal após a exclusão
-          })
-          .catch(error => {
-              console.error('Error deleting pet:', error.message);
-          });
-      });
+    fetch(`https://projeto-integrado-avaliacao.azurewebsites.net/projeto3/fecaf/excluir/pet/${petId}`, {
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to delete pet');
+      }
+      loadPets();
+      deleteModal.hide();
+    })
+    .catch(error => {
+      console.error('Error deleting pet:', error.message);
+    });
   }
 
-  // Abrir o modal de adicionar pet
   document.getElementById('addPetButton').addEventListener('click', function () {
-      const addModal = new bootstrap.Modal(document.getElementById('addModal'));
-      addModal.show();
+    addModal.show();
   });
 
-  // Lidar com o formulário de adição de pet
   document.getElementById('addPetForm').addEventListener('submit', function (event) {
-      event.preventDefault();
-      const pet = {
-          nome: document.getElementById('addPetName').value,
-          raca: document.getElementById('addPetRace').value,
-          cor: document.getElementById('addPetColor').value,
-          image: document.getElementById('addPetImageUrl').value
-      };
+    event.preventDefault();
+    const pet = {
+      nome: document.getElementById('addPetName').value,
+      raca: document.getElementById('addPetRace').value,
+      cor: document.getElementById('addPetColor').value,
+      image: document.getElementById('addPetImageUrl').value
+    };
 
-      const addModal = new bootstrap.Modal(document.getElementById('addModal'));
-
-      fetch('https://projeto-integrado-avaliacao.azurewebsites.net/projeto3/fecaf/novo/pet', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(pet)
-      })
-      .then(response => {
-          loadPets();
-          addModal.hide(); // Esconder o modal após a adição
-      })
-      .catch(error => {
-          console.error('Error adding pet:', error.message);
-      });
+    fetch('https://projeto-integrado-avaliacao.azurewebsites.net/projeto3/fecaf/novo/pet', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(pet)
+    })
+    .then(response => {
+      loadPets();
+      addModal.hide();
+    })
+    .catch(error => {
+      console.error('Error adding pet:', error.message);
+    });
   });
 
-  // Lidar com o formulário de edição de pet
   document.getElementById('editPetForm').addEventListener('submit', function (event) {
-      event.preventDefault();
-      const petId = parseInt(document.querySelector('.edit-button').dataset.id);
-      const pet = {
-          nome: document.getElementById('editPetName').value,
-          raca: document.getElementById('editPetRace').value,
-          cor: document.getElementById('editPetColor').value,
-          image: document.getElementById('editPetImageUrl').value
-      };
+    event.preventDefault();
+    const petId = parseInt(document.getElementById('editPetId').value);
+    const pet = {
+      nome: document.getElementById('editPetName').value,
+      raca: document.getElementById('editPetRace').value,
+      cor: document.getElementById('editPetColor').value,
+      image: document.getElementById('editPetImageUrl').value
+    };
 
-      const editModal = new bootstrap.Modal(document.getElementById('editModal'));
-
-      fetch(`https://projeto-integrado-avaliacao.azurewebsites.net/projeto3/fecaf/atualizar/pet/${petId}`, {
-          method: 'PUT',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(pet)
-      })
-      .then(response => {
-          loadPets();          
-          editModal.hide(); // Esconder o modal após a atualização
-      })
-      .catch(error => {
-          console.error('Error updating pet:', error.message);
-      });
+    fetch(`https://projeto-integrado-avaliacao.azurewebsites.net/projeto3/fecaf/atualizar/pet/${petId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(pet)
+    })
+    .then(response => {
+      loadPets();
+      editModal.hide();
+    })
   });
 });

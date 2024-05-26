@@ -100,6 +100,7 @@
                 </div>
                 <div class="modal-body">
                     <form id="editPetForm">
+                        <input type="hidden" id="editPetId">
                         <div class="mb-3">
                             <label for="editPetName" class="form-label">Name:</label>
                             <input type="text" class="form-control" id="editPetName" required>
@@ -124,7 +125,8 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
+        
 
     <div id="deleteModal" class="modal fade">
         <div class="modal-dialog modal-dialog-centered">
