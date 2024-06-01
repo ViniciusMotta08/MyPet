@@ -1,4 +1,4 @@
-import { User, addUser, getUserByEmail } from '../../domain/models/user.js';
+import { User, addUser, getUserByEmail } from '../../../MyPetProject/domain/models/user.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.getElementById('loginForm');
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const user = getUserByEmail(email);
             if (user && user.password === password) {
                 sessionStorage.setItem('loggedInUser', JSON.stringify(user));
-                window.location.href = '../../pages/home/index.html';
+                window.location.href = '../../../MyPetProject/pages/home/index.html';
             } else {
                 alert('Email ou senha incorretos.');
             }
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
               .then(response => {
                 if(response.status == 200 || response.status == 201){
                     alert('Registro bem-sucedido! Agora você pode fazer login.');
-                    window.location.href = '../../pages/auth/login.html';
+                    window.location.href = '../../../MyPetProject/pages/auth/login.html';
                 }
 
               })

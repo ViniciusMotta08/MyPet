@@ -4,12 +4,12 @@ document.addEventListener('DOMContentLoaded', function () {
   let pets = [];
 
   if (!loggedInUser) {
-    window.location.href = '../../pages/auth/login.html';
+    window.location.href = '../../../MyPetProject/pages/auth/login.html';
   }
 
   logoutButton.addEventListener('click', function () {
     sessionStorage.removeItem('loggedInUser');
-    window.location.href = '../../pages/auth/login.html';
+    window.location.href = '../../../MyPetProject/pages/auth/login.html';
   });
 
   function loadPets() {
